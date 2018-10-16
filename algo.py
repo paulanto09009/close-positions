@@ -179,7 +179,7 @@ def my_rebalance(context, data):
     cash = context.portfolio.cash
 
     cancel_open_buy_orders(context, data)
-    log.info("My Rebalance") 
+    log.info("My Rebalance.") 
     
     
     # Order sell at profit target in hope that somebody actually buys it
