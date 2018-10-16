@@ -63,8 +63,8 @@ def initialize(context):
         time_rules.market_close())
 
     # Create our pipeline and attach it to our algorithm.
-    my_pipe = make_pipeline(context)
-    attach_pipeline(my_pipe, 'my_pipeline')
+    #my_pipe = make_pipeline(context)
+    #attach_pipeline(my_pipe, 'my_pipeline')
 
 
 def make_pipeline(context):
@@ -259,25 +259,6 @@ def my_rebalance(context, data):
                     order(stock, -StockShares,
                           style=LimitOrder(SellPrice)
                           )
-
-    WeightThisBuyOrder = float(1.00 / context.MaxBuyOrdersAtOnce)
-    for ThisBuyOrder in range(context.MaxBuyOrdersAtOnce):
-        stock = context.MyCandidate.next()
-        PH = data.history([stock], 'price', 20, '1d')
-        PH_Avg = float(PH.mean())
-        CurrPrice = float(data.current([stock], 'price'))
-        if np.isnan(CurrPrice):
-            pass  # probably best to wait until nan goes away
-        else:
-            if CurrPrice > float(1.25 * PH_Avg):
-                BuyPrice = float(CurrPrice)
-            else:
-                BuyPrice = float(CurrPrice * BuyFactor)
-            BuyPrice = float(make_div_by_05(BuyPrice, buy=True))
-            StockShares = int(WeightThisBuyOrder * cash / BuyPrice)
-            order(stock, StockShares,
-                  style=LimitOrder(BuyPrice)
-                  )
 
 # if cents not divisible by .05, round down if buy, round up if sell
 
