@@ -170,32 +170,6 @@ def my_compute_weights(context):
 
 
 def before_trading_start(context, data):
-    # Gets our pipeline output every day.
-    #context.output = pipeline_output('my_pipeline')
-
-    #context.stocks_worst = context.output[
-    #    context.output['stocks_worst']].index.tolist()
-
-    #context.stocks_worst_weight = my_compute_weights(context)
-
-    #context.MyCandidate = cycle(context.stocks_worst)
-
-    #context.LowestPrice = context.MyLeastPrice  # reset beginning of day
-    print(len(context.portfolio.positions))
-    for stock in context.portfolio.positions:
-        CurrPrice = float(data.current([stock], 'price'))
-        if CurrPrice < context.LowestPrice:
-            context.LowestPrice = CurrPrice
-        if stock in context.age:
-            context.age[stock] += 1
-        else:
-            context.age[stock] = 1
-    for stock in context.age:
-        if stock not in context.portfolio.positions:
-            context.age[stock] = 0
-        message = 'stock.symbol: {symbol}  :  age: {age}'
-        log.info(message.format(symbol=stock.symbol, age=context.age[stock]))
-
     pass
 
 
