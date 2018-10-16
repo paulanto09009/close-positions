@@ -186,6 +186,7 @@ def my_rebalance(context, data):
     for stock in context.portfolio.positions:
         print(stock)          
         if not get_open_orders(stock.sid):
+            print("no orders")
             StockShares = context.portfolio.positions[stock].amount
             CurrPrice = float(data.current([stock], 'price'))
             CostBasis = float(context.portfolio.positions[stock].cost_basis)
