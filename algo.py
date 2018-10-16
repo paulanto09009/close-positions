@@ -46,9 +46,7 @@ def initialize(context):
     context.age = {}
     print(len(context.portfolio.positions))
 
-    # Rebalance
-    my_rebalance
-    
+    # Rebalance   
     EveryThisManyMinutes = 1
     TradingDayHours = 12
     TradingDayMinutes = int(TradingDayHours * 60)
@@ -172,7 +170,8 @@ def my_compute_weights(context):
 
 
 def before_trading_start(context, data):
-    pass
+    my_rebalance
+    #pass
 
 
 def my_rebalance(context, data):
