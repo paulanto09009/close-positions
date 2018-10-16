@@ -184,7 +184,7 @@ def my_rebalance(context, data):
     
     # Order sell at profit target in hope that somebody actually buys it
     for stock in context.portfolio.positions:
-        log.info("My Rebalance: ",stock,context.age[stock])          
+        log.info(stock,context.age[stock])          
         if not get_open_orders(stock):
             StockShares = context.portfolio.positions[stock].amount
             CurrPrice = float(data.current([stock], 'price'))
@@ -221,7 +221,7 @@ def my_rebalance(context, data):
                           style=LimitOrder(SellPrice)
                           )
             else:
-                log.info("My Rebalance: ",stock,context.age[stock])                 
+                log.info(stock,context.age[stock])  
                 if (stock in context.age and context.age[stock] < 2):
                     pass
                 elif stock not in context.age:
