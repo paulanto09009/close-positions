@@ -50,7 +50,7 @@ def initialize(context):
     my_rebalance
     
     EveryThisManyMinutes = 1
-    TradingDayHours = 16.5
+    TradingDayHours = 12
     TradingDayMinutes = int(TradingDayHours * 60)
     for minutez in range(
         1,
