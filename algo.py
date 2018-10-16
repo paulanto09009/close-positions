@@ -184,7 +184,7 @@ def my_rebalance(context, data):
     
     # Order sell at profit target in hope that somebody actually buys it
     for stock in context.portfolio.positions:
-        print(stock.sid)          
+        print(stock)          
         if not get_open_orders(stock.sid):
             StockShares = context.portfolio.positions[stock].amount
             CurrPrice = float(data.current([stock], 'price'))
@@ -195,7 +195,6 @@ def my_rebalance(context, data):
                     SellFactor,
                     buy=False))
 
-            print(context.age[stock])
             if np.isnan(SellPrice):
                 log.info("My Rebalance: NaN") 
                 pass  # probably best to wait until nan goes away
@@ -222,7 +221,7 @@ def my_rebalance(context, data):
                           style=LimitOrder(SellPrice)
                           )
             else:
-                if (stock in context.age and context.age[stock] < 2):
+                if (stock in context.age and context.age[stock] < 1):
                     pass
                 elif stock not in context.age:
                     context.age[stock] = 1
