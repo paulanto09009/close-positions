@@ -171,7 +171,7 @@ def my_compute_weights(context):
 
 def before_trading_start(context, data):
     # Gets our pipeline output every day.
-    context.output = pipeline_output('my_pipeline')
+    #context.output = pipeline_output('my_pipeline')
 
     context.stocks_worst = context.output[
         context.output['stocks_worst']].index.tolist()
