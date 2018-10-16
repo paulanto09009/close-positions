@@ -190,7 +190,7 @@ def before_trading_start(context, data):
     context.MyCandidate = cycle(context.stocks_worst)
 
     context.LowestPrice = context.MyLeastPrice  # reset beginning of day
-    print len(context.portfolio.positions)
+    #print len(context.portfolio.positions)
     for stock in context.portfolio.positions:
         CurrPrice = float(data.current([stock], 'price'))
         if CurrPrice < context.LowestPrice:
