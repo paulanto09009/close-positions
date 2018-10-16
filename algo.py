@@ -220,7 +220,7 @@ def my_rebalance(context, data):
                           style=LimitOrder(SellPrice)
                           )
             else:
-                log.info("My Rebalance: Winning")                 
+                log.info("My Rebalance: ",stock,context.age[stock])                 
                 if (stock in context.age and context.age[stock] < 2):
                     pass
                 elif stock not in context.age:
