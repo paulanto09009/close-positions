@@ -47,7 +47,7 @@ def initialize(context):
     print(len(context.portfolio.positions))
 
     # Rebalance
-    EveryThisManyMinutes = 10
+    EveryThisManyMinutes = 1
     TradingDayHours = 6.5
     TradingDayMinutes = int(TradingDayHours * 60)
     for minutez in range(
