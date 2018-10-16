@@ -221,6 +221,7 @@ def my_rebalance(context, data):
                           style=LimitOrder(SellPrice)
                           )
             else:
+                print(context.age[stock] < 1)
                 if (stock in context.age and context.age[stock] < 1):
                     pass
                 elif stock not in context.age:
