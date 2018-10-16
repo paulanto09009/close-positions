@@ -173,14 +173,14 @@ def before_trading_start(context, data):
     # Gets our pipeline output every day.
     #context.output = pipeline_output('my_pipeline')
 
-    context.stocks_worst = context.output[
-        context.output['stocks_worst']].index.tolist()
+    #context.stocks_worst = context.output[
+    #    context.output['stocks_worst']].index.tolist()
 
-    context.stocks_worst_weight = my_compute_weights(context)
+    #context.stocks_worst_weight = my_compute_weights(context)
 
-    context.MyCandidate = cycle(context.stocks_worst)
+    #context.MyCandidate = cycle(context.stocks_worst)
 
-    context.LowestPrice = context.MyLeastPrice  # reset beginning of day
+    #context.LowestPrice = context.MyLeastPrice  # reset beginning of day
     print(len(context.portfolio.positions))
     for stock in context.portfolio.positions:
         CurrPrice = float(data.current([stock], 'price'))
