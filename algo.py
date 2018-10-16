@@ -179,7 +179,9 @@ def my_rebalance(context, data):
     cash = context.portfolio.cash
 
     cancel_open_buy_orders(context, data)
-
+    log.info("My Rebalance") 
+    
+    
     # Order sell at profit target in hope that somebody actually buys it
     for stock in context.portfolio.positions:
         if not get_open_orders(stock):
@@ -193,8 +195,10 @@ def my_rebalance(context, data):
                     buy=False))
 
             if np.isnan(SellPrice):
+                log.info("My Rebalance: NaN") 
                 pass  # probably best to wait until nan goes away
             elif (stock in context.age and context.age[stock] == 1):
+                log.info("My Rebalance: Age")                 
                 pass
             elif (
                 stock in context.age
@@ -204,6 +208,7 @@ def my_rebalance(context, data):
                     or CostBasis > CurrPrice
                 )
             ):
+                log.info("My Rebalance: Losing")                 
                 if (stock in context.age and context.age[stock] < 2):
                     pass
                 elif stock not in context.age:
@@ -215,6 +220,7 @@ def my_rebalance(context, data):
                           style=LimitOrder(SellPrice)
                           )
             else:
+                log.info("My Rebalance: Winning")                 
                 if (stock in context.age and context.age[stock] < 2):
                     pass
                 elif stock not in context.age:
