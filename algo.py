@@ -184,7 +184,7 @@ def my_rebalance(context, data):
     
     # Order sell at profit target in hope that somebody actually buys it
     for stock in context.portfolio.positions:
-        print(stock)          
+        print(get_open_orders(stock.sid))          
         if not get_open_orders(stock.sid):
             print("no orders")
             StockShares = context.portfolio.positions[stock].amount
