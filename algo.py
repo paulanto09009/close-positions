@@ -227,11 +227,13 @@ def my_rebalance(context, data):
                           )
             else:
                 if (stock in context.age and context.age[stock] < 1):
+                    log.info("My Rebalance: too young")  
                     pass
                 elif stock not in context.age:
+                    log.info("My Rebalance: no age")  
                     context.age[stock] = 1
                 else:
-
+                    log.info("My Rebalance: Place order")  
                     order(stock, -StockShares,
                           style=LimitOrder(SellPrice)
                           )
