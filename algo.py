@@ -170,7 +170,7 @@ def my_compute_weights(context):
 
 
 def before_trading_start(context, data):
-    #pass
+    pass
 
 
 def my_rebalance(context, data):
