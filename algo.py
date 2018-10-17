@@ -48,7 +48,7 @@ def initialize(context):
 
     # Rebalance   
     EveryThisManyMinutes = 1
-    TradingDayHours = 12
+    TradingDayHours = 6.5
     TradingDayMinutes = int(TradingDayHours * 60)
     for minutez in range(
         1,
@@ -170,7 +170,6 @@ def my_compute_weights(context):
 
 
 def before_trading_start(context, data):
-    my_rebalance
     #pass
 
 
@@ -184,10 +183,11 @@ def my_rebalance(context, data):
     
     
     # Order sell at profit target in hope that somebody actually buys it
+    open_orders = get_open_orders()
     for stock in context.portfolio.positions:
         print(stock.sid)          
         print(get_open_orders(stock.sid))          
-        if not get_open_orders(stock.sid):
+        if stock not in open_orders:
             print("no orders")
             StockShares = context.portfolio.positions[stock].amount
             CurrPrice = float(data.current([stock], 'price'))
